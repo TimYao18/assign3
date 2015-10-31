@@ -193,6 +193,8 @@ void draw() {
 
           int upperY = abs(((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
           int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)((MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x)));
+          println(upperY, lowerY);
+          
           image(enemy, enemyPosX, enemyY+upperY*ENEMY_SIZE);
           if (upperY != lowerY) {
             image(enemy, enemyPosX, enemyY+lowerY*ENEMY_SIZE);
@@ -224,8 +226,6 @@ void draw() {
         } else {
           enemyY = floor(random(height-ENEMY_SIZE*(MAX_ENEMY_TEAM_VERTICAL_NUM)));
         }
-        
-        println(enemyTeamType, enemyY);
       }
 
       // enemy boundary detection
