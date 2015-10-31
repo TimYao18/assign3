@@ -1,3 +1,5 @@
+
+
 /* please implement your assign2 code in this file. */
 
 // constant variables
@@ -121,7 +123,7 @@ void setup () {
   treasureX = floor(random(width-TREASURE_SIZE));
   treasureY = floor(random(height-TREASURE_SIZE));  
   
-
+  enemyY = floor(random(ENEMY_SIZE*2,height-ENEMY_SIZE));
 }
 
 void draw() {
@@ -174,38 +176,38 @@ void draw() {
       }
 
       // draw enemy team 
-      if (enemyTeamType == 0) {
-        for (int enemyNo = 0; enemyNo < MAX_ENEMY_TEAM_HORIZONTAL_NUM; enemyNo++) {
-          int enemyPosX = enemyX - enemyNo * (ENEMY_SIZE + ENEMY_GAP);
-          image(enemy, enemyPosX, enemyY);
-        }
-      }
-      else if (enemyTeamType == 1) {
+      //if (enemyTeamType == 0) {
+      //  for (int enemyNo = 0; enemyNo < MAX_ENEMY_TEAM_HORIZONTAL_NUM; enemyNo++) {
+      //    int enemyPosX = enemyX - enemyNo * (ENEMY_SIZE + ENEMY_GAP);
+      //    image(enemy, enemyPosX, enemyY);
+      //  }
+      //}
+      //else if (enemyTeamType == 1) {
         for (int enemyNo = 0; enemyNo < MAX_ENEMY_TEAM_HORIZONTAL_NUM; enemyNo++) {
           int enemyPosX = enemyX - enemyNo * (ENEMY_SIZE + ENEMY_GAP);
           int enemyPosY = enemyY + slantDirection * enemyNo * ENEMY_GAP;
           image(enemy, enemyPosX, enemyPosY);
         }
-      }
-      else if (enemyTeamType == 2) {
-        for (int x = 0; x < MAX_ENEMY_TEAM_HORIZONTAL_NUM; x++) {
-          int enemyPosX = enemyX - x * (ENEMY_SIZE + ENEMY_GAP);
+      //}
+      //else if (enemyTeamType == 2) {
+      //  for (int x = 0; x < MAX_ENEMY_TEAM_HORIZONTAL_NUM; x++) {
+      //    int enemyPosX = enemyX - x * (ENEMY_SIZE + ENEMY_GAP);
 
-          int upperY = abs(((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
-          int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
-          image(enemy, enemyPosX, enemyY+upperY*ENEMY_SIZE);
-          if (upperY != lowerY) {
-            image(enemy, enemyPosX, enemyY+lowerY*ENEMY_SIZE);
-          }
-        }        
-      }
+      //    int upperY = abs(((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
+      //    int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
+      //    image(enemy, enemyPosX, enemyY+upperY*ENEMY_SIZE);
+      //    if (upperY != lowerY) {
+      //      image(enemy, enemyPosX, enemyY+lowerY*ENEMY_SIZE);
+      //    }
+      //  }        
+      //}
 
       // enemy start position
       if (enemyX <= enemyX - ENEMY_SIZE) {
         enemyX = enemyX - ENEMY_SIZE;
       } else if (enemyX >=  width + MAX_ENEMY_TEAM_HORIZONTAL_NUM * (ENEMY_SIZE + ENEMY_GAP)) {
         enemyX = 0;
-        enemyTeamType++;
+        enemyTeamType=1;
 
         // reset position
         if (enemyTeamType == 0 || enemyTeamType > 2) {
@@ -213,14 +215,15 @@ void draw() {
           enemyY = floor(random(height-ENEMY_SIZE));
         } else if (enemyTeamType == 1) {
           if (random(-1, 1) >= 0) {
+            // slant /
             slantDirection = 1;
-            enemyY = floor(random(height-ENEMY_SIZE-ENEMY_GAP*(MAX_ENEMY_TEAM_VERTICAL_NUM-2)));
+            enemyY = floor(random(height-ENEMY_SIZE*3));
           }
           else {
+            // slant \
             slantDirection = -1;
-            enemyY = floor(random(height-ENEMY_SIZE-ENEMY_GAP*(MAX_ENEMY_TEAM_VERTICAL_NUM-2),height-ENEMY_SIZE));
+            enemyY = floor(random(ENEMY_SIZE*2,height-ENEMY_SIZE));
           }
-
         } else {
           enemyY = floor(random(height-ENEMY_SIZE*(MAX_ENEMY_TEAM_VERTICAL_NUM)));
         }
