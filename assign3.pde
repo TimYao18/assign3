@@ -189,12 +189,10 @@ void draw() {
       }
       else if (enemyTeamType == 2) {
         for (int x = 0; x < MAX_ENEMY_TEAM_HORIZONTAL_NUM; x++) {
-          int enemyPosX = enemyX - x * (ENEMY_SIZE + ENEMY_GAP); //<>//
+          int enemyPosX = enemyX - x * (ENEMY_SIZE + ENEMY_GAP);
 
           int upperY = abs(((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
-          int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)((MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x)));
-          println(upperY, lowerY);
-          
+          int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
           image(enemy, enemyPosX, enemyY+upperY*ENEMY_SIZE);
           if (upperY != lowerY) {
             image(enemy, enemyPosX, enemyY+lowerY*ENEMY_SIZE);
