@@ -176,31 +176,31 @@ void draw() {
       }
 
       // draw enemy team 
-      //if (enemyTeamType == 0) {
-      //  for (int enemyNo = 0; enemyNo < MAX_ENEMY_TEAM_HORIZONTAL_NUM; enemyNo++) {
-      //    int enemyPosX = enemyX - enemyNo * (ENEMY_SIZE + ENEMY_GAP);
-      //    image(enemy, enemyPosX, enemyY);
-      //  }
-      //}
-      //else if (enemyTeamType == 1) {
+      if (enemyTeamType == 0) {
+        for (int enemyNo = 0; enemyNo < MAX_ENEMY_TEAM_HORIZONTAL_NUM; enemyNo++) {
+          int enemyPosX = enemyX - enemyNo * (ENEMY_SIZE + ENEMY_GAP);
+          image(enemy, enemyPosX, enemyY);
+        }
+      }
+      else if (enemyTeamType == 1) {
         for (int enemyNo = 0; enemyNo < MAX_ENEMY_TEAM_HORIZONTAL_NUM; enemyNo++) {
           int enemyPosX = enemyX - enemyNo * (ENEMY_SIZE + ENEMY_GAP);
           int enemyPosY = enemyY + slantDirection * enemyNo * ENEMY_GAP;
           image(enemy, enemyPosX, enemyPosY);
         }
-      //}
-      //else if (enemyTeamType == 2) {
-      //  for (int x = 0; x < MAX_ENEMY_TEAM_HORIZONTAL_NUM; x++) {
-      //    int enemyPosX = enemyX - x * (ENEMY_SIZE + ENEMY_GAP);
+      }
+      else if (enemyTeamType == 2) {
+        for (int x = 0; x < MAX_ENEMY_TEAM_HORIZONTAL_NUM; x++) {
+          int enemyPosX = enemyX - x * (ENEMY_SIZE + ENEMY_GAP);
 
-      //    int upperY = abs(((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
-      //    int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
-      //    image(enemy, enemyPosX, enemyY+upperY*ENEMY_SIZE);
-      //    if (upperY != lowerY) {
-      //      image(enemy, enemyPosX, enemyY+lowerY*ENEMY_SIZE);
-      //    }
-      //  }        
-      //}
+          int upperY = abs(((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
+          int lowerY = (MAX_ENEMY_TEAM_VERTICAL_NUM - 1 - abs((int)(MAX_ENEMY_TEAM_HORIZONTAL_NUM/2) - x));
+          image(enemy, enemyPosX, enemyY+upperY*ENEMY_SIZE);
+          if (upperY != lowerY) {
+            image(enemy, enemyPosX, enemyY+lowerY*ENEMY_SIZE);
+          }
+        }        
+      }
 
       // enemy start position
       if (enemyX <= enemyX - ENEMY_SIZE) {
