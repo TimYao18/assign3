@@ -207,7 +207,7 @@ void draw() {
         enemyX = enemyX - ENEMY_SIZE;
       } else if (enemyX >=  width + MAX_ENEMY_TEAM_HORIZONTAL_NUM * (ENEMY_SIZE + ENEMY_GAP)) {
         enemyX = 0;
-        enemyTeamType=1;
+        enemyTeamType++;
 
         // reset position
         if (enemyTeamType == 0 || enemyTeamType > 2) {
